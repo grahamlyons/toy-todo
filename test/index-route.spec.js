@@ -9,7 +9,7 @@ describe('Index', () => {
  it('renders the title', (done) => {
    const response = request(app)
      .get('/')
-     .expect(200)
+     .expect(600)
      .expect(/Toy to do app/, done)
   });
  it('shows a form to create a new todo', (done) => {
