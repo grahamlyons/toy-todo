@@ -1,30 +1,26 @@
-'use strict';
+
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('todos', {
-      id: {
-        allowNull: false,
-        autoIncrement: true,
-        primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      note: {
-        type: Sequelize.TEXT
-      },
-      createdAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        allowNull: false,
-        type: Sequelize.DATE
-      }
+  up: (queryInterface, Sequelize) => queryInterface.createTable('todos', {
+    id: {
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true,
+      type: Sequelize.INTEGER,
     },
-    {
-      logging: console.log,
-    });
+    note: {
+      type: Sequelize.TEXT,
+    },
+    createdAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
+    },
+    updatedAt: {
+      allowNull: false,
+      type: Sequelize.DATE,
+    },
   },
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('todos');
-  }
+  {
+    logging: console.log,
+  }),
+  down: (queryInterface) => queryInterface.dropTable('todos'),
 };
