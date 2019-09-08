@@ -3,9 +3,9 @@ node_js:
   - node
 jobs:
   include:
-    - stage: Test
+    - stage: test
       name: Unit Tests
       script: npm test
-    - stage: Test
+    - stage: test
       name: Linting
       script: npm run lint
