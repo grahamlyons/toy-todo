@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   web:
-    build: .
+    image: toy-do:local
     environment:
       NODE_ENV: production
       DATABASE_HOST: db
