@@ -1,7 +1,7 @@
 version: "3.7"
 services:
   web:
-    image: toy-do:local
+    image: ${WEB_IMAGE}
     environment:
       NODE_ENV: production
       DATABASE_HOST: db
@@ -22,3 +22,14 @@ services:
       - type: bind
         source: ./migrations
         target: /docker-entrypoint-initdb.d
+  tests:
+    image: cypress/included:3.4.1
+    environment:
+      - CYPRESS_baseUrl=http://web:3000
+    working_dir: /e2e
+    volumes:
+      - type: bind
+        source: .
+        target: /e2e
+    depends_on:
+      - web
