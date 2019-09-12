@@ -33,7 +33,7 @@ jobs:
     if: branch = master
     name: Deploy
     install: skip
-    script: heroku container:release web
+    script: heroku container:release web --app toy-do
   - stage: smoke-test
     if: branch = master
     name: Smoke test
