@@ -21,6 +21,11 @@ jobs:
       export WEB_IMAGE="registry.heroku.com/toy-do/web:${TRAVIS_BUILD_NUMBER}"
       echo "${HEROKU_AUTH_TOKEN}" | docker login --username=_ --password-stdin registry.heroku.com
       docker-compose run tests
+  - stage: database
+    name: Database migration
+    script: |
+      export $(heroku config:get --app toy-do --shell DATABASE_URL)
+      npm run db:migrate
 env:
   global:
     secure: KSY/P9txTp0JNIeczq51+6vBjLvDaysa4TSxaaC2gLAbrOmxpPv8a2hCuBmRoXNQCvkB7yf3vziTqT8JUPj7h7Ft8xlYqvyPv2jwQvzrEFCq/HTueTKqZRrNqzWptJO2cGJR690hfFVN7Y+Gz7mJWRnumc1bHzqg0C/eL3VD9mZ1QNcOQOtW12bmfvw+hNLwcTNzghofD2S58OBvmh1af0BH+6IvgRIX4cXNiTWuafArf5G65ozx162GWwp9oz9MTWDt4jIIzkQSTA4oaiqzmqtsDo/H7gGF8nWOCUI6rS5oknCph07WwkO3eT9gkDKgI1R1i5KodEqyL2A0vX/xaF91Q496sEQj7T3CKpvF/Nj6LkFeEiKB/qq0TNhWLIMiPk6TK58qwwFeTqqITFSuE1DfwrLcqL5drHAWCZSVCjyhJOpPEfGfN5RQCyBhKeLAe2/Ktcw9UtuYZ9UlyYZ9XG5dCDypUZ4U/UaTRHP+Wvz7m2GCbMzDSSuKvTU+M4sMq/yeSDna6L9PxgncUoEw54+NpzS71vBccFYqdVFH2Hh1PflOwSz5FpN5WoUBovnjPhmyX6lcVHKGj5J3LwjNi/IHrCl2So5kohoiSleq5XgL9ZJqwjpPVI00xfwhbNnLoP97XWrrvdjFj582lPHz2DzOYIqQq30g28kq9fx8lTo=
