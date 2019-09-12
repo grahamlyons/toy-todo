@@ -14,14 +14,14 @@ jobs:
     install: skip
     script: |
       docker image build -t "registry.heroku.com/toy-do/web:${TRAVIS_BUILD_NUMBER}" .
-      echo "${HEROKU_AUTH_TOKEN}" | docker login --username=_ --password-stdin registry.heroku.com
+      echo "${HEROKU_API_KEY}" | docker login --username=_ --password-stdin registry.heroku.com
       docker image push "registry.heroku.com/toy-do/web:${TRAVIS_BUILD_NUMBER}"
   - stage: acceptance-tests
     name: Acceptance tests
     install: skip
     script: |
       export WEB_IMAGE="registry.heroku.com/toy-do/web:${TRAVIS_BUILD_NUMBER}"
-      echo "${HEROKU_AUTH_TOKEN}" | docker login --username=_ --password-stdin registry.heroku.com
+      echo "${HEROKU_API_KEY}" | docker login --username=_ --password-stdin registry.heroku.com
       docker-compose run tests
   - stage: database
     if: branch = master
