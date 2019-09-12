@@ -6,7 +6,9 @@
         "jest/globals": true
     },
     "extends": [
-        "airbnb-base"
+        "airbnb-base",
+        "plugin:cypress/recommended"
+
     ],
     "parserOptions": {
         "ecmaVersion": 2018
