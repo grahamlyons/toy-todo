@@ -4,10 +4,7 @@ services:
     image: ${WEB_IMAGE}
     environment:
       NODE_ENV: production
-      DATABASE_HOST: db
-      DATABASE_USERNAME: web
-      DATABASE_PASSWORD: pass
-      DATABASE_NAME: todo
+      DATABASE_URL: postgres://web:pass@db:5432/todo
     ports:
       - 3000:3000
     depends_on:
