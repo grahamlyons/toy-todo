@@ -3,7 +3,7 @@ services:
   web:
     image: ${WEB_IMAGE}
     environment:
-      NODE_ENV: production
+      NODE_ENV: staging
       DATABASE_URL: postgres://web:pass@db:5432/todo
     ports:
       - 3000:3000
