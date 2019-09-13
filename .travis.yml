@@ -27,6 +27,7 @@ jobs:
     if: branch = master
     name: Database migration
     script: |
+      NODE_ENV=production
       export $(heroku config:get --app toy-do --shell DATABASE_URL)
       npm run db:migrate
   - stage: deploy
