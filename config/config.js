@@ -12,7 +12,7 @@ module.exports = {
     dialect: 'postgres',
     operatorsAliases: false,
     dialectOptions: {
-        ssl: true,
+      ssl: true,
     },
   },
 };
