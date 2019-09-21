@@ -34,7 +34,7 @@ jobs:
     if: branch = master
     name: Deploy
     install: skip
-    script: ./deploy.sh
+    script: "./deploy.sh"
   - stage: smoke-test
     if: branch = master
     name: Smoke test
@@ -42,4 +42,4 @@ jobs:
     script: curl --silent --show-error --fail https://toy-do.herokuapp.com
 env:
   global:
-  - secure: O62xaqGrhf9OSv2lFgcdCaYyvkQgZIf1noVuuM6M3EE0SfVo7q+ZPEikM6LU7y1mnEke5H1QvU4eG9aoZLDkYFCWreK6kNXCGCugzNJEdqhqsCBOmGH81u6Cgioxky9T24znrbbiNQbrNgqbiLsI2JcfYgCiodJZdUyF3Cru0Thh7rb1VD+k0XfIbmfir6Nm0sS044f3Tk9FPsLgbhHIxU64+0/WeCRk7RWA4qXdXGJ9u5BqTPqYZjB/x68HylmLYPP+TlD/axuE9W6frE4Mv8GX8SuUSHmKNxC2vff+CpgGtcoXyuaabPYx3Dx5Xd8U18Z3vAqzmF/fOVwTxNtcWpv4XMhYQI/mteAOv/d+LtF7cKZTI72gcWSDwI66GQa04+msTMT752x4fveQOfgGOwZ+4u//EcavpBqUNdzU4o1h+ECOVxEUrpV04q0CXRWOBYoupXBEiy9YIQGCMWXG6dLRaTvTX3Fr6v8q2FhMdTz3acMsyucMqQufYSzTXpHnm+kYGFRM5hXMb2VMPRpCyUHxiv3jD/dyp4ykXRK5OcZ/wacbArtNP0YOL2ot9hET2oV7h8PWayeyYPUEfwRxlla2TPpcfq5Ub4uvCjknO0Nx54DtxdWpYkwNJB1q6CnOm4W1U81p9B79q1CiJoAPHJmeIuws9fEks17Z8pOMapU=
+    secure: caIfHd2xqFiIWQAzQiphREwoKpEqYmWrcYUU2+y5ZYf5o4aiD44ui5ZtCC8R+QAuY+jqtMX9r8xogWqPChGmL5jFRuTF7zjKed/4z9OzezaffZwFlOy3j40oUpVtvosBJ9S6kguSE7pCTlztgwVkswf1Bb/Iqo5vjw5ECk1LzMr8O4ykr1oT+40q9h2Fbf+x/T31mbUToHxG2Y4w/p7pIlR3HWmmSkX9WJwJQkHm/OtjoN0mJDwe0t2wK7HWGzsDZXA1boILjc0s0OQjZvHWA5XkeRwEUzJgLNn38FQL0R946jTSgh/iL+kD+Ew9R76s+bHbf/itEA8exTV1N7X1hHPtnxuMSN+ycOHSMMI1lF5e3TvWygfbLL0S1U3eQq3fV91PUr6p/LlBMTwIvdNmqahuUle5eyxAMwYPHn1eHXQa4QdG22vuQvJ5G7A39fVl7EPe2Bp3d67JygzTPok+vp6TzeXNJYJAhu8RrHyk7MIN8Hj06tbdIXpM1ujIb1nclkHKZgAuQbTq1+ie26yhY026j5pnkrwoVZ6Enb00NoLDbnImHrrxNJ5XRkc+8mp/Hr/nkdyyVpXgkJ9tNCQVnEjHm+dqaWFfUut/4pSWxAhRL01yyWAu89wKszQXT8jyFyhVFLVUI4ltlFgCn176aoBSP7Vw1OHxf32vSf2yb68=
