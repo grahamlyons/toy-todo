@@ -23,19 +23,19 @@ jobs:
       echo "${HEROKU_API_KEY}" | docker login --username=_ --password-stdin registry.heroku.com
       docker-compose run tests
   - stage: database
-    if: branch = master
+    if: branch = 1_travis
     name: Database migration
     script: |
       export NODE_ENV=production
       export $(heroku config:get --app toy-do --shell DATABASE_URL | tr -d \')
       npm run db:migrate
   - stage: deploy
-    if: branch = master
+    if: branch = 1_travis
     name: Deploy
     install: skip
     script: ./deploy.sh
   - stage: smoke-test
-    if: branch = master
+    if: branch = 1_travis
     name: Smoke test
     install: skip
     script: curl --silent --show-error --fail https://toy-do.herokuapp.com
