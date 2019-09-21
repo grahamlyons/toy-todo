@@ -22,6 +22,23 @@ jobs:
       export WEB_IMAGE="registry.heroku.com/toy-do/web:${TRAVIS_BUILD_NUMBER}"
       echo "${HEROKU_API_KEY}" | docker login --username=_ --password-stdin registry.heroku.com
       docker-compose run tests
+  - stage: database
+    if: branch = master
+    name: Database migration
+    script: |
+      export NODE_ENV=production
+      export $(heroku config:get --app toy-do --shell DATABASE_URL | tr -d \')
+      npm run db:migrate
+  - stage: deploy
+    if: branch = master
+    name: Deploy
+    install: skip
+    script: ./deploy.sh
+  - stage: smoke-test
+    if: branch = master
+    name: Smoke test
+    install: skip
+    script: curl --silent --show-error --fail https://toy-do.herokuapp.com
 env:
   global:
     secure: OZp66HbMq1F3jlmP3RRbrjiX1dfoHrciZuvPRFvHX69BVULIyzcfrdVUMXur0O5dv9v2iVt1x2Q+3NvyywITwMlHDAy0otnysXDdTdGgIXhcYDfitWp/unckGmWPLUMKXH/Zyce42mH+jWMjrDwZ35PLr2fB/T188Sx+f91Ji3SU8SMx2We7VUdl73ojzcWxFsfHL94PbAeuyGF+e7THGHBApDar0omF7gxkzLT34Uk1GZCOK/RwJfxjWCGwp7iPkWCMvjNAkpbuDa6XfUFUgFmMeZdPowtO6r6C5aNidLzDHYFKrzZpT8584kkjGpS75ADmhtbojJvfj3OFbUt9eHmfMG/SED53BW3seA2sdsvF2sfFRHHwKJpmegmIbIN3/zgVklaLoeW1Fu90MsJTKRlDg/xSnvq388WPdr9EK45PEEOjzF3PD8/+ZZssPqxw5fvNQtmUdOEP9LZpS4KZ79gUh3p4ZFto8abM8p9aIYOWgMUAKQkSYFZKAh5FX8uSViJc7+/sLWfx0viKJ0rTB5vJeTu/PNC2nLHgEjodfIMLPhYOf0fVfj46y5DAjqHLNdyKUqIA/o5xjXleRS0b7XG6lCh2rw9dqTHa5BKXZY9bAtd+tieaTpbrmyfurc9kBOAVtzrVPJDXBCQ3YhvesLmY2VMC8ioGDJ0ZaTCk13g=
