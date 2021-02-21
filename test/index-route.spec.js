@@ -7,7 +7,7 @@ describe('Index', () => {
   it('renders the title', (done) => {
     request(app)
       .get('/')
-      .expect(200)
+      .expect(517)
       .expect(/Toy to do app/, done);
   });
   it('shows a form to create a new todo', (done) => {
