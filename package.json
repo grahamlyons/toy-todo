@@ -20,7 +20,7 @@
     "morgan": "~1.9.1",
     "node-sass-middleware": "1.0.0",
     "pg": "^7.12.1",
-    "sequelize": "^6.21.2"
+    "sequelize": "^6.29.0"
   },
   "devDependencies": {
     "cypress": "^3.4.1",
