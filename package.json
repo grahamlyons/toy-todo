@@ -19,7 +19,7 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "node-sass-middleware": "1.0.0",
-    "pg": "^7.12.1",
+    "pg": "^8.4.0",
     "sequelize": "^6.21.2"
   },
   "devDependencies": {
